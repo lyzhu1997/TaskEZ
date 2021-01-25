@@ -7,31 +7,11 @@
     android:clipToPadding="false"
     android:focusableInTouchMode="true"
     tools:context=".Collaboration.ChatActivity">
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:text="Chat"
-            android:popupTheme="@style/PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/messageRecyclerView"
+    <ListView
+        android:id="@+id/messages_list"
         android:layout_width="match_parent"
         android:layout_weight="2"
         android:layout_height="0dp"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -64,3 +44,4 @@
             android:focusable="true" />
     </LinearLayout>
 </LinearLayout>
+

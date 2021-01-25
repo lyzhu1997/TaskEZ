@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.compile1.Login.LoginActivity;
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
@@ -13,18 +15,13 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.format.DateFormat;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.compile1.R;
@@ -35,27 +32,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ChatActivity extends AppCompatActivity {
-    public static class MessageViewHolder extends RecyclerView.ViewHolder {
-
-        TextView messageText, messageTime, messageUser;
-
-        public MessageViewHolder(View itemView) {
-            super(itemView);
-            messageText = (TextView)itemView.findViewById(R.id.message_text);
-            messageTime = (TextView)itemView.findViewById(R.id.message_time);
-            messageUser = (TextView)itemView.findViewById(R.id.message_user);
-        }
-    }
-    private String mUserId = "anonymous";
-    private RecyclerView mMessageRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
-    private ProgressBar mProgressBar;
-
+    private String userId;
     // Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mFirebaseDatabaseReference;
-    private FirebaseRecyclerAdapter<ChatMessage, MessageViewHolder> mFirebaseAdapter;
+    private FirebaseListAdapter<ChatMessage> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,17 +53,10 @@ public class ChatActivity extends AppCompatActivity {
             finish();
             return;
         } else {
-            mUserId = mFirebaseUser.getEmail();
+            userId = mFirebaseUser.getEmail();
         }
-
-        // Initialize ProgressBar and RecyclerView.
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mMessageRecyclerView = (RecyclerView) findViewById(R.id.messageRecyclerView);
-        mLinearLayoutManager = new LinearLayoutManager(this);
-        mLinearLayoutManager.setStackFromEnd(true);
-        mMessageRecyclerView.setLayoutManager(mLinearLayoutManager);
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference().child("chat");
-
+        DatabaseReference messagesRef = mFirebaseDatabaseReference.child("chat");
         SnapshotParser<ChatMessage> parser = new SnapshotParser<ChatMessage>() {
             @Override
             public ChatMessage parseSnapshot(DataSnapshot dataSnapshot) {
@@ -91,36 +66,6 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 return chatMessage;
             }
-        };
-        DatabaseReference messagesRef = mFirebaseDatabaseReference.child("chat");
-        FirebaseRecyclerOptions<ChatMessage> options =
-                new FirebaseRecyclerOptions.Builder<ChatMessage>()
-                        .setQuery(messagesRef, parser)
-                        .build();
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<ChatMessage, MessageViewHolder>(options) {
-            @Override
-            public MessageViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-                LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-                return new MessageViewHolder(inflater.inflate(R.layout.item_message, viewGroup, false));
-            }
-
-            @Override
-            protected void onBindViewHolder(final MessageViewHolder viewHolder,
-                                            int position,
-                                            ChatMessage chatMessage) {
-                mProgressBar.setVisibility(ProgressBar.INVISIBLE);
-                if (chatMessage.getMessageUser().equals(mUserId)) {
-                    viewHolder.messageText.setText(chatMessage.getMessageText());
-                    viewHolder.messageUser.setText("You");
-                    viewHolder.messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
-                            chatMessage.getMessageTime()));
-                } else {
-                    viewHolder.messageText.setText(chatMessage.getMessageText());
-                    viewHolder.messageUser.setText(chatMessage.getMessageUser());
-                    viewHolder.messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
-                            chatMessage.getMessageTime()));
-                    }
-                }
         };
 
         ImageButton sendButton = findViewById(R.id.send_button);
@@ -137,12 +82,48 @@ public class ChatActivity extends AppCompatActivity {
                         .child("chat")
                         .push()
                         .setValue(new ChatMessage(input.getText().toString(),
-                                mUserId)
+                                userId)
                         );
 
                 // Clear the input
                 input.setText("");
             }
         });
+
+        ListView listOfMessages = (ListView)findViewById(R.id.messages_list);
+
+        FirebaseListOptions<ChatMessage> options =
+                new FirebaseListOptions.Builder<ChatMessage>()
+                        .setLayout(R.layout.item_message)
+                        .setQuery(messagesRef, parser)
+                        .build();
+        adapter = new FirebaseListAdapter<ChatMessage>(options) {
+            @Override
+            protected void populateView(View v, ChatMessage chatMessage, int position) {
+                TextView messageText = (TextView)v.findViewById(R.id.message_text);
+                TextView messageUser = (TextView)v.findViewById(R.id.message_user);
+                TextView messageTime = (TextView)v.findViewById(R.id.message_time);
+                // Get references to the views of message.xml
+                if (chatMessage.getMessageUser().equals(userId)) {
+                    messageText.setText(chatMessage.getMessageText());
+                    messageUser.setText("You");
+                    messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                            chatMessage.getMessageTime()));
+                } else {
+                    messageText.setText(chatMessage.getMessageText());
+                    messageUser.setText(chatMessage.getMessageUser());
+                    messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                            chatMessage.getMessageTime()));
+                }
+            }
+        };
+
+        listOfMessages.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
     }
 }
