@@ -3,6 +3,7 @@ package com.example.compile1.Team;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,6 +27,27 @@ public class CreateTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
+
+        Button addTask = (Button) findViewById(R.id.btnAddTask);
+        addTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        Button backBtn = (Button) findViewById(R.id.btnTaskCancel);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
         //Date time picker
         taskDue = findViewById(R.id.task_due);
         taskDue.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +81,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         taskName = findViewById(R.id.task_name);
         taskDesc = findViewById(R.id.task_desc);
         btnAddTask = findViewById(R.id.btnAddTask);
-        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel = findViewById(R.id.btnUpdateCancel);
 
         //firebase
 

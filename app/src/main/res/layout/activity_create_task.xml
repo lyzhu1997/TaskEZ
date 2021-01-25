@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
-        android:id="@+id/btnCancel"
+        android:id="@+id/btnTaskCancel"
         android:layout_width="339dp"
         android:layout_height="70dp"
         android:layout_marginTop="116dp"
