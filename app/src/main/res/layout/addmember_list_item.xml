@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/addmember_Cardview"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_margin="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="horizontal"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="6dp">
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/addmember_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:includeFontPadding="false"
+        android:text="KIT"
+        android:textColor="@color/navy_700"
+        android:textSize="20dp" />
+
+</androidx.cardview.widget.CardView>

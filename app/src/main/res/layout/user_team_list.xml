@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp"
+    android:id="@+id/project_Cardview"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:id="@+id/background_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffbf00"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/team_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="80dp"
+            android:textColor="@color/white"
+            android:text="Team 1"
+            android:fontFamily="@font/montserrat_bold"
+            android:includeFontPadding="false"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/team_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/team_title"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/montserrat"
+            android:includeFontPadding="false"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:text="fsfasdfasdfasf"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/team_id"
+            android:layout_width="91dp"
+            android:layout_height="8dp"
+            android:layout_above="@+id/team_desc"
+            android:layout_alignTop="@+id/team_title"
+            android:layout_alignEnd="@+id/team_desc"
+            android:layout_alignRight="@+id/team_desc"
+            android:layout_marginStart="81dp"
+            android:layout_marginLeft="81dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="-180dp"
+            android:layout_marginRight="-180dp"
+            android:layout_marginBottom="37dp"
+            android:layout_toEndOf="@+id/team_title"
+            android:layout_toRightOf="@+id/team_title"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="5dp" />
+
+
+        <!--         assign people team -->
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

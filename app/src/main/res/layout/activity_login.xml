@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.LoginActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
+        android:layout_width="900px"
+        android:layout_height="500px"
+        android:background="#C1FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_logo"
+        app:layout_constraintVertical_bias="0.112">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <Button
+        android:id="@+id/loginLoginBttn"
+        android:layout_width="400px"
+        android:layout_height="150px"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="40px"
+        app:backgroundTint="@color/navy_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loginSignUpBttn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/viewPager2"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager2"
+        app:layout_constraintVertical_bias="0.206" />
+
+    <Button
+        android:id="@+id/loginForgotPasswordBttn"
+        android:layout_width="900px"
+        android:layout_height="150px"
+        android:text="forgot password"
+        android:textColor="@color/navy_200"
+        android:textSize="40px"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loginSignUpBttn"
+        app:layout_constraintStart_toEndOf="@+id/loginLoginBttn"
+        app:layout_constraintTop_toBottomOf="@+id/loginLoginBttn"
+        app:layout_constraintVertical_bias="0.348" />
+
+    <ImageView
+        android:id="@+id/user_icon"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_marginTop="5dp"
+        android:padding="20px"
+        app:layout_constraintBottom_toBottomOf="@+id/LoginUserEmail"
+        app:layout_constraintEnd_toStartOf="@+id/LoginUserEmail"
+        app:layout_constraintStart_toStartOf="@+id/viewPager2"
+        app:layout_constraintTop_toTopOf="@+id/LoginUserEmail"
+        app:srcCompat="@drawable/user_icon" />
+
+    <EditText
+        android:id="@+id/LoginUserEmail"
+        android:layout_width="650px"
+        android:layout_height="150px"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="User Email"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/viewPager2"
+        app:layout_constraintTop_toTopOf="@+id/viewPager2"
+        app:layout_constraintVertical_bias="0.269" />
+
+    <EditText
+        android:id="@+id/LoginUserPassword"
+        android:layout_width="650px"
+        android:layout_height="150px"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager2"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/viewPager2"
+        app:layout_constraintTop_toTopOf="@+id/viewPager2"
+        app:layout_constraintVertical_bias="0.387" />
+
+    <Button
+        android:id="@+id/loginSignUpBttn"
+        android:layout_width="400px"
+        android:layout_height="150px"
+        android:text="signup"
+        android:textColor="#FAFAFA"
+        android:textSize="40px"
+        app:backgroundTint="@color/navy_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager2"
+        app:layout_constraintVertical_bias="0.206" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:padding="20px"
+        app:layout_constraintBottom_toBottomOf="@+id/LoginUserPassword"
+        app:layout_constraintEnd_toStartOf="@+id/LoginUserPassword"
+        app:layout_constraintStart_toStartOf="@+id/viewPager2"
+        app:layout_constraintTop_toTopOf="@+id/LoginUserPassword"
+        app:srcCompat="@drawable/password_icon" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="240dp"
+        android:layout_height="237dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073"
+        app:srcCompat="@drawable/logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

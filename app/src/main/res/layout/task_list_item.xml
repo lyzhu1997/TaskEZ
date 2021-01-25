@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/member_Cardview"
+    android:layout_width="360dp"
+    android:layout_height="120dp"
+    android:layout_margin="10dp"
+    android:orientation="horizontal"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:id="@+id/background_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:layout_width="230dp"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/task_checked"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="35dp"
+                android:buttonTint="@color/navy_700" />
+
+            <TextView
+                android:id="@+id/task_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat"
+                android:includeFontPadding="false"
+                android:paddingTop="8dp"
+                android:text="In-Progress"
+                android:textColor="@color/dark_grey"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:id="@+id/task_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="55dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:includeFontPadding="false"
+                android:text="KIT"
+                android:textColor="@color/navy_700"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/task_due"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:includeFontPadding="false"
+            android:text="TextView"
+            android:textColor="@color/navy_700"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/task_isDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:textColor="@color/navy_200"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/task_due"
+            android:text="100%"/>
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
