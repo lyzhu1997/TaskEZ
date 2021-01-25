@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 
 import com.example.compile1.Login.UserDetail;
+import com.example.compile1.Note.Adapter;
+import com.example.compile1.Note.Note;
 import com.example.compile1.Note.NoteMainActivity;
 import com.example.compile1.R;
 import com.example.compile1.Homepage.HelperClasses.TeamAdapter;
@@ -38,6 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -146,8 +149,15 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
         });
 
 
-        //textview if team isempty
-        
+        //textview if team is empty
+        TextView noteamText = findViewById(R.id.noTeamList);
+        if(teams.isEmpty()){
+            noteamText.setVisibility(View.VISIBLE);
+        }else {
+            noteamText.setVisibility(View.GONE);
+            userTeamRecycler();
+        }
+
     }
 
     //Function for when side drawer is pressed back
@@ -162,8 +172,11 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
 
 
 
+
+
     //user's task recyclerview
     private void userTaskRecycler() {
+
         userTaskRecycler.setHasFixedSize(true);
         userTaskRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         //Project view

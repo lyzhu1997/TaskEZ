@@ -146,6 +146,18 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="30dp"
                             android:layout_marginTop="40dp" />
+
+                        <TextView
+                            android:id="@+id/noTeamList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="100dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text='Empty ! Add New Team using " + "'
+                            android:textColor="@color/navy_700"
+                            android:textSize="18dp"
+                            android:visibility="gone" />
                     </RelativeLayout>
 
                 </LinearLayout>
