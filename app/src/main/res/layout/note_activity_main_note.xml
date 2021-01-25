@@ -12,7 +12,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/navy_200" />
+        android:background="@color/navy_200"
+        app:theme="@style/ThemeOverlay.AppCompat"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/allNotesList"

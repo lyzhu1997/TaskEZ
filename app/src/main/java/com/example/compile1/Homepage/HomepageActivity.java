@@ -121,7 +121,7 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
 //            }
 //        });
 
-        System.out.println("Meowwwwww");
+
         //hooks for side drawer
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -144,6 +144,10 @@ public class HomepageActivity extends AppCompatActivity implements NavigationVie
                 startActivity(noteIntent);
             }
         });
+
+
+        //textview if team isempty
+        
     }
 
     //Function for when side drawer is pressed back
