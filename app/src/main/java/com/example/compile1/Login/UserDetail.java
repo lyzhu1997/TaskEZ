@@ -8,6 +8,7 @@ public class UserDetail {
     private String ContactNumber;
     private String email;
     public ArrayList<String> teamID = new ArrayList<>();
+    public ArrayList<String> taskTitle = new ArrayList<>();
 
 
     public UserDetail(String nickname, String contactNumber, String email) {
@@ -18,6 +19,14 @@ public class UserDetail {
 
     public UserDetail(){
 
+    }
+
+    public ArrayList<String> getTaskTitle() {
+        return taskTitle;
+    }
+
+    public void setTaskTitle(ArrayList<String> taskTitle) {
+        this.taskTitle = taskTitle;
     }
 
     public ArrayList<String> getTeamID() {

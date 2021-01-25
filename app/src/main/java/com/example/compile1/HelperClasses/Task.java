@@ -6,6 +6,8 @@ public class Task extends ArrayList<Task> {
     String taskName;
     String taskDue;
     String taskDesc;
+    String teamID;
+    String taskID;
     ArrayList<TaskItem> taskItems = new ArrayList<>();
 
     public Task(){
@@ -13,10 +15,28 @@ public class Task extends ArrayList<Task> {
     }
 
 
-    public Task(String taskName, String taskDue, String taskDesc) {
+    public Task(String taskName, String taskDue, String taskDesc, String teamID, String taskID) {
         this.taskName = taskName;
         this.taskDue = taskDue;
         this.taskDesc = taskDesc;
+        this.teamID = teamID;
+        this.taskID = taskID;
+    }
+
+    public String getTaskID() {
+        return taskID;
+    }
+
+    public void setTaskID(String taskID) {
+        this.taskID = taskID;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
     }
 
     public String getTaskName() {

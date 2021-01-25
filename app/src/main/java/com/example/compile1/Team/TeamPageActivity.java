@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class TeamPageActivity extends AppCompatActivity {
     TextView teamNameTv;
     String teamName;
     Button chat_button;
-
+    private ImageView addTask;
     private String teamID;
     //database
     private FirebaseDatabase db;
@@ -91,6 +92,14 @@ public class TeamPageActivity extends AppCompatActivity {
                 memberRecycler();
             }
         },3000);
+
+        addTask = (ImageView) findViewById(R.id.etAddTask);
+        addTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addTaskOnCliked(v);
+            }
+        });
     }
 
     private void memberRecycler() {
@@ -111,9 +120,11 @@ public class TeamPageActivity extends AppCompatActivity {
         taskRecycler.setHasFixedSize(true);
         taskRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         ArrayList<Task> taskLocations = new ArrayList<>();
-        taskLocations.add(new Task("Unity UI kit","Tomorrow","This is test task description"));
-        taskLocations.add(new Task("DEBUG APP","12-04-21","This is test task description"));
-        taskLocations.add(new Task("Task 3","23-03-21","This is test task description"));
+        if(team.getTasks()!=null){
+            for(int i = 0; i < team.getTasks().size(); i++){
+                taskLocations.add(new Task(team.getTasks().get(i).getTaskName(),team.getTasks().get(i).getTask_due(),team.getTasks().get(i).getTask_desc(),teamID,String.valueOf(i)));
+            }
+        }
         TaskAdapter adapter = new TaskAdapter(taskLocations,getApplicationContext());
         taskRecycler.setAdapter(adapter);
 
@@ -153,6 +164,7 @@ public class TeamPageActivity extends AppCompatActivity {
 
     public void addTaskOnCliked(View view){
         Intent addtask = new Intent(this, CreateTaskActivity.class);
+        addtask.putExtra("teamID",teamID);
         startActivity(addtask);
     }
 

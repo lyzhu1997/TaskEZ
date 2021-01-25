@@ -93,12 +93,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="408dp"
         android:layout_height="314dp"
-        android:layout_marginBottom="60dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/assignedUserBttn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_desc">
 
         <RelativeLayout
@@ -142,5 +143,18 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/assignedUserBttn"
+        android:layout_width="600px"
+        android:layout_height="180px"
+        android:background="@color/navy_200"
+        android:text="assign user"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_desc"
+        app:layout_constraintVertical_bias="0.958" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

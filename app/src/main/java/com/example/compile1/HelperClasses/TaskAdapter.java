@@ -76,6 +76,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 intent.putExtra("taskName",taskLocations.get(position).taskName);
                 intent.putExtra("taskDesc",taskLocations.get(position).taskDesc);
                 intent.putExtra("taskDue",taskLocations.get(position).taskDue);
+                intent.putExtra("teamID", taskLocations.get(position).teamID);
+                intent.putExtra("taskID",taskLocations.get(position).taskID);
 //                Bundle args = new Bundle();
                 //get taskitems in Task.java
 //                args.putSerializable("taskItems",(Serializable)taskLocations.get(position).getTaskItems());

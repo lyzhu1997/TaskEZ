@@ -168,7 +168,6 @@ public class CreateTeamActivity extends AppCompatActivity {
         int check = 0;
         boolean checkUsername = false;
         String name = "";
-        Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
         DatabaseReference readRef = db.getReference("user");
         readRef.addValueEventListener(new ValueEventListener() {
             @Override
