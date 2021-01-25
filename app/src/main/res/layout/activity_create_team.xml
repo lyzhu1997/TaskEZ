@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,19 +8,42 @@
     android:gravity="center_horizontal">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/creatTeamToolbar"
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/creatTeamToolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:elevation="4dp"-->
+<!--        android:gravity="center"-->
+<!--        app:titleTextColor="@color/navy_200"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:gravity="center"
-        app:titleTextColor="@color/navy_200"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="Create Team"
+            android:textColor="@color/navy_200"
+
+            android:textSize="23dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -31,7 +55,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="vertical"
-            android:paddingTop="50dp">
+            >
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,8 +92,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginBottom="30dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +140,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
-                        android:layout_marginBottom="181dp"
+                        android:layout_marginBottom="139dp"
                         android:background="@color/navy_200"
                         android:onClick="addMemberOnCliked"
                         android:text="add"
@@ -133,32 +157,41 @@
 
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="50dp"
-                    android:onClick="createTeamBackOnClicked"
-                    android:text="cancel"
-                    android:textColor="@color/navy_200"
-                    app:backgroundTint="@color/white" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/navy_200"
-                    android:onClick="saveRecord"
-                    android:text="Save"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/navy_200" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="339dp"
+            android:layout_height="70dp"
+            android:background="@color/navy_200"
+            android:onClick="saveRecord"
+            android:text="Save"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/navy_200" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginTop="0dp"
+            android:layout_width="339dp"
+            android:layout_height="70dp"
+            android:background="@drawable/task_input_bg"
+            android:onClick="createTeamBackOnClicked"
+            android:text="Cancel"
+            android:textColor="@color/navy_200" />
+
+
+    </LinearLayout>
 </LinearLayout>

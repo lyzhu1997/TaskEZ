@@ -58,9 +58,9 @@ public class CreateTeamActivity extends AppCompatActivity {
         ref = db.getReference("teams");
         readData();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.creatTeamToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Create Team");
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.creatTeamToolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("Create Team");
 
         values = new ArrayList<String>();
         listViewRecords = (ListView) findViewById(R.id.addMemberLV);
