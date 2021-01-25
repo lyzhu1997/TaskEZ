@@ -1,7 +1,10 @@
 package com.example.compile1.Homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.example.compile1.Login.UserDetail;
 import com.example.compile1.Note.NoteMainActivity;
@@ -22,6 +27,7 @@ import com.example.compile1.Homepage.HelperClasses.TeamHelperClass;
 import com.example.compile1.Homepage.HelperClasses.UserTaskAdapter;
 import com.example.compile1.Homepage.HelperClasses.UserTaskHelperClass;
 import com.example.compile1.Team.CreateTeamActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,9 +36,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-public class HomepageActivity extends AppCompatActivity {
+public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
     //database
@@ -50,6 +57,7 @@ public class HomepageActivity extends AppCompatActivity {
     //Drawer
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    Toolbar toolbar;
 
     RecyclerView userTeamRecycler,userTaskRecycler;
     @Override
@@ -105,15 +113,51 @@ public class HomepageActivity extends AppCompatActivity {
         userTaskRecycler = findViewById(R.id.usertask_recycler);
         userTaskRecycler();
 
-        noteBtn = (Button)findViewById(R.id.notePage);
-        noteBtn.setOnClickListener(new View.OnClickListener() {
+//        noteBtn = (Button)findViewById(R.id.notePage);
+//        noteBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                directToNotePage();
+//            }
+//        });
+
+        System.out.println("Meowwwwww");
+        //hooks for side drawer
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+
+
+        //navigation drawer menu
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        //floating button
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingNote);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                directToNotePage();
+            public void onClick(View view) {
+                Intent noteIntent = new Intent(HomepageActivity.this,NoteMainActivity.class);
+                startActivity(noteIntent);
             }
         });
-
     }
+
+    //Function for when side drawer is pressed back
+    public void onBackPressed(){
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
+
+
+
     //user's task recyclerview
     private void userTaskRecycler() {
         userTaskRecycler.setHasFixedSize(true);
@@ -213,4 +257,8 @@ public class HomepageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
+    }
 }
