@@ -2,11 +2,7 @@ package com.example.compile1.Team;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -16,14 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.compile1.HelperClasses.AddMemberAdapter;
 import com.example.compile1.Homepage.HelperClasses.TeamHelperClass;
 import com.example.compile1.Login.UserDetail;
 import com.example.compile1.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
@@ -45,6 +37,7 @@ public class CreateTeamActivity extends AppCompatActivity {
     ArrayList<String> key = new ArrayList<>();
     private int userCounter;
     private ArrayList<UserDetail> users;
+    private ArrayList<UserDetail> chosenUsers;
     private Button addMember;
     private boolean check = false;
 
@@ -60,6 +53,7 @@ public class CreateTeamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_team);
 
         users = new ArrayList<>();
+        chosenUsers = new ArrayList<>();
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("teams");
         readData();
@@ -128,8 +122,6 @@ public class CreateTeamActivity extends AppCompatActivity {
             return;
         }
 
-        team = new TeamHelperClass(id,name,description,users);
-        ref.child(id).setValue(team);
 
         // add new team name to database
         try{
@@ -138,6 +130,7 @@ public class CreateTeamActivity extends AppCompatActivity {
                 boolean checkEmail = false;
                 for(int j = 0; j < values.size(); j++){
                     if(values.get(j).equals(users.get(i).getEmail())){
+                        chosenUsers.add(users.get(i));
                         checkEmail = true;
                     }
                 }
@@ -148,6 +141,9 @@ public class CreateTeamActivity extends AppCompatActivity {
                     users.set(i,temp);
                 }
             }
+
+            team = new TeamHelperClass(id,name,description,chosenUsers);
+            ref.child(id).setValue(team);
 
             for(int i = 0; i < users.size(); i++){
                 String[] split = users.get(i).getEmail().split("@");
@@ -172,6 +168,7 @@ public class CreateTeamActivity extends AppCompatActivity {
         int check = 0;
         boolean checkUsername = false;
         String name = "";
+        Toast.makeText(this, "pass", Toast.LENGTH_SHORT).show();
         DatabaseReference readRef = db.getReference("user");
         readRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -195,7 +192,7 @@ public class CreateTeamActivity extends AppCompatActivity {
             boolean checkUsername = false;
             String[] splitStr = email.split("@");
             for (int i = 0; i < key.size(); i++) {
-                if (key.get(0).equals(splitStr[0])) {
+                if (key.get(i).equals(splitStr[0])) {
                     checkUsername = true;
                 }
             }

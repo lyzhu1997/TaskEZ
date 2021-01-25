@@ -3,13 +3,16 @@ package com.example.compile1.Team;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -26,8 +29,11 @@ import com.example.compile1.HelperClasses.TaskAdapter;
 import com.example.compile1.Homepage.HelperClasses.TeamAdapter;
 import com.example.compile1.Homepage.HelperClasses.TeamHelperClass;
 import com.example.compile1.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -37,9 +43,11 @@ public class TeamPageActivity extends AppCompatActivity {
     String teamName;
     Button chat_button;
 
+    private String teamID;
     //database
     private FirebaseDatabase db;
     private DatabaseReference ref;
+    private TeamHelperClass team = new TeamHelperClass();
 
     SwipeController swipeController = null;
     @Override
@@ -49,6 +57,7 @@ public class TeamPageActivity extends AppCompatActivity {
 
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("teams");
+        teamID = getIntent().getStringExtra("id");
 
         teamName = getIntent().getStringExtra("teamName");
         teamNameTv = findViewById(R.id.team_name);
@@ -68,9 +77,20 @@ public class TeamPageActivity extends AppCompatActivity {
 
         taskRecycler = findViewById(R.id.task_recycler);
         memberRecycler = findViewById(R.id.member_recycler);
+        try {
+            readTeamsData();
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
-        taskRecycler();
-        memberRecycler();
+                taskRecycler();
+                memberRecycler();
+            }
+        },3000);
     }
 
     private void memberRecycler() {
@@ -79,10 +99,9 @@ public class TeamPageActivity extends AppCompatActivity {
 
         //Project view
         ArrayList<String> teamLocations = new ArrayList<>();
-        teamLocations.add("Abu");
-        teamLocations.add("Chong");
-        teamLocations.add("Ali");
-        teamLocations.add("Nene");
+        for(int i = 0; i < team.getUsers().size(); i ++){
+            teamLocations.add(team.getUsers().get(i).getNickname());
+        }
         MemberAdapter adapter = new MemberAdapter(teamLocations,getApplicationContext());
         memberRecycler.setAdapter(adapter);
 
@@ -162,5 +181,23 @@ public class TeamPageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void readTeamsData() throws Exception {
+        int check = 0;
+        boolean checkUsername = false;
+        DatabaseReference readRef = db.getReference("teams/"+teamID);
+        readRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                team = snapshot.getValue(TeamHelperClass.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }
