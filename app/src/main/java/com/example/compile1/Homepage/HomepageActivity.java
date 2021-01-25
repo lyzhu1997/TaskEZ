@@ -114,8 +114,12 @@ public class HomepageActivity extends AppCompatActivity {
         userTaskRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         //Project view
         ArrayList<UserTaskHelperClass> taskLocations = new ArrayList<>();
-        taskLocations.add(new UserTaskHelperClass("Task 1","In progress"));
-        taskLocations.add(new UserTaskHelperClass("Task 2","In progress"));
+//        if(user.taskTitle!=null){
+//            for(int i =0; i<user.taskTitle.size();i++){
+//
+//                taskLocations.add(new UserTaskHelperClass(user.taskTitle.get(i),"In progress"));
+//            }
+//        }
         UserTaskAdapter adapter = new UserTaskAdapter(taskLocations,getApplicationContext());
         userTaskRecycler.setAdapter(adapter);
     }

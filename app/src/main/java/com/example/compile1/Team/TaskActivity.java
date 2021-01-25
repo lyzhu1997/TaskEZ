@@ -185,19 +185,19 @@ public class TaskActivity extends AppCompatActivity {
 //        user.setTaskTitle(taskTitles);
 //        refUser.child("taskTitles").setValue(taskTitles);
 
-        ArrayList<UserTaskHelperClass>tasks = new ArrayList<>();
-        if(team!=null){
-
-            for(int i =0; i<team.getTasks().size();i++){
-                UserTaskHelperClass temp = team.getTasks().get(i);
-                if(String.valueOf(i).equals(taskID)){
-                    temp.setAssignedUser(userAssigned);
-                }
-                tasks.add(team.getTasks().get(i));
-            }
-            team.setTasks(tasks);
-            ref.child(teamID).setValue(team);
-        }
+//        ArrayList<UserTaskHelperClass>tasks = new ArrayList<>();
+//        if(team!=null){
+//
+//            for(int i =0; i<team.getTasks().size();i++){
+//                UserTaskHelperClass temp = team.getTasks().get(i);
+//                if(String.valueOf(i).equals(taskID)){
+//                    temp.setAssignedUser(userAssigned);
+//                }
+//                tasks.add(team.getTasks().get(i));
+//            }
+//            team.setTasks(tasks);
+//            ref.child(teamID).setValue(team);
+//        }
 
         Intent intent = new Intent(this,TeamPageActivity.class);
         startActivity(intent);
