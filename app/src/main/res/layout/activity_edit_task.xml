@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
+
         android:background="@drawable/create_task_card"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,9 +163,10 @@
         android:fontFamily="@font/montserrat_bold"
         android:text="Cancel"
         android:textColor="@color/navy_200"
-        app:backgroundTint="@color/white"
+        android:background="@drawable/task_input_bg"
+        android:elevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

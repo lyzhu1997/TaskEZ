@@ -100,7 +100,7 @@ public class TaskActivity extends AppCompatActivity {
     private void taskItemRecycler() {
         //add recycle task item
         taskItemRecycler.setHasFixedSize(true);
-        taskItemRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        taskItemRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         ArrayList<TaskItem>  taskItem = new ArrayList<TaskItem>();
         taskItem.add(new TaskItem("Meow",null,false));
         taskItem.add(new TaskItem("Bark",null,false));

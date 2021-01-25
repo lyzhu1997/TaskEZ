@@ -127,7 +127,7 @@ public class HomepageActivity extends AppCompatActivity {
     //user's team recyclerview
     private void userTeamRecycler() {
         userTeamRecycler.setHasFixedSize(true);
-        userTeamRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        userTeamRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
 
         //Project view
