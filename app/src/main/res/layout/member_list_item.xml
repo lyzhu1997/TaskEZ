@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     app:cardCornerRadius="20dp"
     app:cardElevation="6dp"
-    android:background="">
+    >
 
     <TextView
         android:layout_gravity="center"
