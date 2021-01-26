@@ -6,7 +6,8 @@
     app:cardCornerRadius="20dp"
     android:layout_margin="10dp"
     android:id="@+id/usertask_Cardview"
-    app:cardElevation="6dp">
+    app:cardElevation="6dp"
+    >
 
     <RelativeLayout
         android:id="@+id/background_color"
@@ -14,6 +15,7 @@
         android:layout_height="match_parent"
         android:background="@null"
         android:padding="5dp"
+
         >
 
         <TextView
@@ -44,7 +46,8 @@
             android:text="fsfasdfasdfasf"
             android:textColor="@color/navy_200"
             android:textSize="13dp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            />
 
 
         <!--         assign people team -->

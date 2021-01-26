@@ -145,12 +145,12 @@
 
     <Button
         android:id="@+id/btnAddTask"
-        android:layout_width="339dp"
+        android:layout_width="280dp"
         android:layout_height="70dp"
         android:layout_marginTop="32dp"
-        android:background="@color/navy_200"
         android:fontFamily="@font/montserrat_bold"
         android:text="Create"
+        android:background="@drawable/task_input_bg"
         android:textColor="#FFFFFF"
         app:backgroundTint="@color/navy_200"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,13 +159,14 @@
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="339dp"
+        android:layout_width="280dp"
         android:layout_height="70dp"
         android:layout_marginTop="116dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Cancel"
+        android:background="@drawable/task_input_bg"
         android:textColor="@color/navy_200"
-        app:backgroundTint="@color/white"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
