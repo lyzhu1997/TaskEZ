@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.compile1.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -55,6 +56,16 @@ public class NoteMainActivity extends AppCompatActivity {
             displayList(allNotes);
         }
 
+        FloatingActionButton floatingActionButton = findViewById(R.id.noteFloatBtn);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NoteMainActivity.this, "Add New Note", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(NoteMainActivity.this,AddNote.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     private void displayList(List<Note> allNotes) {
@@ -65,19 +76,21 @@ public class NoteMainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.note_main_menu,menu);
-        return true;
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.note_main_menu,menu);
+//        return true;
+            return false;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.add){
-            Toast.makeText(this, "Add New Note", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this,AddNote.class);
-            startActivity(i);
-        }
-        return super.onOptionsItemSelected(item);
+//        if(item.getItemId() == R.id.add){
+//            Toast.makeText(this, "Add New Note", Toast.LENGTH_SHORT).show();
+//            Intent i = new Intent(this,AddNote.class);
+//            startActivity(i);
+//        }
+//        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     @Override
