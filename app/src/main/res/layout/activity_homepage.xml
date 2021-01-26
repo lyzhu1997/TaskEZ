@@ -44,14 +44,15 @@
             android:id="@+id/floatingNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="87dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="28dp"
             android:clickable="true"
             android:src="@drawable/ic_baseline_note_add_24"
             app:backgroundTint="@color/navy_200"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.912"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -90,7 +91,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
-            android:layout_height="212dp"
+            android:layout_height="230dp"
             android:layout_marginTop="180dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +101,7 @@
 
             <ScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="212dp"
                 android:background="#F7FFFFFF">
 
                 <LinearLayout
@@ -171,7 +172,7 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="409dp"
-            android:layout_height="172dp"
+            android:layout_height="192dp"
             android:layout_marginTop="400dp"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
@@ -207,6 +208,18 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="30dp"
                             android:paddingTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/noTaskList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="100dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text='Empty ! Add New Team using " + "'
+                            android:textColor="@color/navy_700"
+                            android:textSize="18dp"
+                            android:visibility="gone" />
                     </RelativeLayout>
 
                 </LinearLayout>

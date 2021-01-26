@@ -20,7 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/navy_200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -155,17 +155,36 @@
 
     </LinearLayout>
 
-    <Button
+<!--    <Button-->
+<!--        android:id="@+id/chat_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Chat"-->
+<!--        android:background="@drawable/task_input_bg"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.916"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"-->
+<!--        app:layout_constraintVertical_bias="0.888"-->
+<!--        app:cornerRadius="10dp"-->
+<!--        ></Button>-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/chat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chat"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_baseline_chat_24"
+        android:tooltipText="Chat"
+        app:backgroundTint="@color/navy_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.974"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

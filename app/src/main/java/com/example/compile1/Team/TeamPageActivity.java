@@ -100,6 +100,17 @@ public class TeamPageActivity extends AppCompatActivity {
                 addTaskOnCliked(v);
             }
         });
+        //back button
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void memberRecycler() {
